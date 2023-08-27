@@ -329,7 +329,8 @@ namespace FinalProjectWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { 
+            var user = new ApplicationUser() {
+                UserName = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,

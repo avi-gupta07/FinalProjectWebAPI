@@ -11,6 +11,7 @@ namespace FinalProjectWebAPI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -18,6 +19,14 @@ namespace FinalProjectWebAPI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Appplication_BeginRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Orgin", "http://127.0.0.1:5500/");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET,POST");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin,contentType,Authorization");
+
         }
     }
 }
